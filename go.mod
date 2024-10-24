@@ -1,4 +1,4 @@
-module github.com/qquiqlerr/randomCoffeeProtoc
+module github.com/qquiqlerr/randomCoffeeProtos
 
 go 1.23.2
 
