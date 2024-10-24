@@ -1,4 +1,4 @@
-module protos
+module github.com/qquiqlerr/randomCoffeeProtos
 
 go 1.23.2
 
