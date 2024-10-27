@@ -14,7 +14,7 @@ service UserService{
 message User{
   string name = 1;
   string email = 2;
-  repeated string interests = 3;
+  repeated int64 interests = 3;
   string refresh_token = 4;
   string hashed_password = 5;
 }
