@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-
 package user;
 option go_package = "api/proto/user";
 
@@ -17,6 +16,7 @@ message User{
   repeated int64 interests = 3;
   string refresh_token = 4;
   string hashed_password = 5;
+  repeated int64 available_dates = 6;
 }
 
 
@@ -30,7 +30,7 @@ message CreateUserResponse{
 
 message GetUserRequest{
   int64 user_id = 1;
-  repeated string fields = 2;
+  UserFields fields = 2;
 }
 
 message GetUserResponse{
@@ -39,7 +39,8 @@ message GetUserResponse{
 
 message UpdateUserRequest{
   int64 user_id = 1;
-  User fields = 2;
+  UserFields fields = 2;
+  User data = 3;
 }
 
 message UpdateUserResponse{
@@ -64,3 +65,12 @@ message GetInterestsResponse{
 }
 
 message Empty{}
+
+message UserFields{
+  bool name = 1;
+  bool email = 2;
+  bool interests = 3;
+  bool refresh_token = 4;
+  bool hashed_password = 5;
+  bool available_dates = 6;
+}
