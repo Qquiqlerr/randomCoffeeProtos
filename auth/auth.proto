@@ -31,6 +31,8 @@ message RegisterRequest {
     string email = 2;
     string password = 3;
     repeated int64 interests = 4;
+    string tg_handle = 5;
+    repeated int64 available_dates = 6;
 }
 
 message RegisterResponse {
