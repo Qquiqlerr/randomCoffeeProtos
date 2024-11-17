@@ -74,4 +74,5 @@ message UserFields{
   bool refresh_token = 4;
   bool hashed_password = 5;
   bool available_dates = 6;
+  bool tg_handle = 7;
 }
