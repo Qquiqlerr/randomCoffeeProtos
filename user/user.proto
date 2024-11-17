@@ -10,15 +10,16 @@ service UserService{
   rpc FindUserIDByEmail(FindUserIDRequest) returns (FindUserIDResponse);
   rpc GetInterests(Empty) returns (GetInterestsResponse);
 }
+
 message User{
   string name = 1;
   string email = 2;
   repeated int64 interests = 3;
   string refresh_token = 4;
   string hashed_password = 5;
-  repeated int64 available_dates = 6;
+  string tg_handle = 6;
+  repeated int64 available_dates = 7;
 }
-
 
 message CreateUserRequest{
   User user = 1;
