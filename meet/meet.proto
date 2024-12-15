@@ -21,12 +21,14 @@ message CreateMeetResponse{
 }
 
 message ApproveMeetRequest{
+  int64 meet_id = 1;
 }
 
 message ApproveMeetResponse{
 }
 
 message GetFutureRequest{
+  int64 user_id = 1;
 }
 
 message GetFutureResponse{
@@ -36,8 +38,9 @@ message GetFutureResponse{
 
 
 message GetHistoryRequest{
-  string start_date = 1;
-  string end_date = 2;
+  int64 user_id = 1;
+  string start_date = 2;
+  string end_date = 3;
 }
 
 message GetHistoryResponse{
@@ -48,70 +51,4 @@ message Meet{
   int64 first_id = 1;
   int64 second_id = 2;
   string date = 3;
-}
-
-message User{
-  string name = 1;
-  string email = 2;
-  repeated int64 interests = 3;
-  string refresh_token = 4;
-  string hashed_password = 5;
-  string tg_handle = 6;
-  repeated int64 available_dates = 7;
-}
-
-message CreateUserRequest{
-  User user = 1;
-}
-message CreateUserResponse{
-  int64 user_id = 1;
-
-}
-
-message GetUserRequest{
-  int64 user_id = 1;
-  UserFields fields = 2;
-}
-
-message GetUserResponse{
-  User user = 1;
-}
-
-message UpdateUserRequest{
-  int64 user_id = 1;
-  UserFields fields = 2;
-  User data = 3;
-}
-
-message UpdateUserResponse{
-  bool status = 1;
-}
-
-message FindUserIDRequest{
-  string email = 1;
-}
-
-message FindUserIDResponse{
-  int64 user_id = 1;
-}
-
-message Interest{
-  string interest = 1;
-  int64 id = 2;
-}
-
-message GetInterestsResponse{
-  repeated Interest interests = 1;
-}
-
-message Empty{}
-
-message UserFields{
-  bool name = 1;
-  bool email = 2;
-  bool interests = 3;
-  bool refresh_token = 4;
-  bool hashed_password = 5;
-  bool available_dates = 6;
-  bool tg_handle = 7;
 }
