@@ -51,4 +51,5 @@ message Meet{
   int64 first_id = 1;
   int64 second_id = 2;
   string date = 3;
+  bool is_approved = 4;
 }
