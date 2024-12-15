@@ -19,215 +19,215 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_GetHistory_FullMethodName  = "/meet.UserService/GetHistory"
-	UserService_GetFuture_FullMethodName   = "/meet.UserService/GetFuture"
-	UserService_ApproveMeet_FullMethodName = "/meet.UserService/ApproveMeet"
-	UserService_CreateMeet_FullMethodName  = "/meet.UserService/CreateMeet"
+	MeetService_GetHistory_FullMethodName  = "/meet.MeetService/GetHistory"
+	MeetService_GetFuture_FullMethodName   = "/meet.MeetService/GetFuture"
+	MeetService_ApproveMeet_FullMethodName = "/meet.MeetService/ApproveMeet"
+	MeetService_CreateMeet_FullMethodName  = "/meet.MeetService/CreateMeet"
 )
 
-// UserServiceClient is the client API for UserService service.
+// MeetServiceClient is the client API for MeetService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserServiceClient interface {
+type MeetServiceClient interface {
 	GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error)
 	GetFuture(ctx context.Context, in *GetFutureRequest, opts ...grpc.CallOption) (*GetFutureResponse, error)
 	ApproveMeet(ctx context.Context, in *ApproveMeetRequest, opts ...grpc.CallOption) (*ApproveMeetResponse, error)
 	CreateMeet(ctx context.Context, in *CreateMeetRequest, opts ...grpc.CallOption) (*CreateMeetResponse, error)
 }
 
-type userServiceClient struct {
+type meetServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
-	return &userServiceClient{cc}
+func NewMeetServiceClient(cc grpc.ClientConnInterface) MeetServiceClient {
+	return &meetServiceClient{cc}
 }
 
-func (c *userServiceClient) GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error) {
+func (c *meetServiceClient) GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetHistoryResponse)
-	err := c.cc.Invoke(ctx, UserService_GetHistory_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MeetService_GetHistory_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) GetFuture(ctx context.Context, in *GetFutureRequest, opts ...grpc.CallOption) (*GetFutureResponse, error) {
+func (c *meetServiceClient) GetFuture(ctx context.Context, in *GetFutureRequest, opts ...grpc.CallOption) (*GetFutureResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetFutureResponse)
-	err := c.cc.Invoke(ctx, UserService_GetFuture_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MeetService_GetFuture_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) ApproveMeet(ctx context.Context, in *ApproveMeetRequest, opts ...grpc.CallOption) (*ApproveMeetResponse, error) {
+func (c *meetServiceClient) ApproveMeet(ctx context.Context, in *ApproveMeetRequest, opts ...grpc.CallOption) (*ApproveMeetResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ApproveMeetResponse)
-	err := c.cc.Invoke(ctx, UserService_ApproveMeet_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MeetService_ApproveMeet_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) CreateMeet(ctx context.Context, in *CreateMeetRequest, opts ...grpc.CallOption) (*CreateMeetResponse, error) {
+func (c *meetServiceClient) CreateMeet(ctx context.Context, in *CreateMeetRequest, opts ...grpc.CallOption) (*CreateMeetResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateMeetResponse)
-	err := c.cc.Invoke(ctx, UserService_CreateMeet_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, MeetService_CreateMeet_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UserServiceServer is the server API for UserService service.
-// All implementations must embed UnimplementedUserServiceServer
+// MeetServiceServer is the server API for MeetService service.
+// All implementations must embed UnimplementedMeetServiceServer
 // for forward compatibility.
-type UserServiceServer interface {
+type MeetServiceServer interface {
 	GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error)
 	GetFuture(context.Context, *GetFutureRequest) (*GetFutureResponse, error)
 	ApproveMeet(context.Context, *ApproveMeetRequest) (*ApproveMeetResponse, error)
 	CreateMeet(context.Context, *CreateMeetRequest) (*CreateMeetResponse, error)
-	mustEmbedUnimplementedUserServiceServer()
+	mustEmbedUnimplementedMeetServiceServer()
 }
 
-// UnimplementedUserServiceServer must be embedded to have
+// UnimplementedMeetServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedUserServiceServer struct{}
+type UnimplementedMeetServiceServer struct{}
 
-func (UnimplementedUserServiceServer) GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error) {
+func (UnimplementedMeetServiceServer) GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHistory not implemented")
 }
-func (UnimplementedUserServiceServer) GetFuture(context.Context, *GetFutureRequest) (*GetFutureResponse, error) {
+func (UnimplementedMeetServiceServer) GetFuture(context.Context, *GetFutureRequest) (*GetFutureResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFuture not implemented")
 }
-func (UnimplementedUserServiceServer) ApproveMeet(context.Context, *ApproveMeetRequest) (*ApproveMeetResponse, error) {
+func (UnimplementedMeetServiceServer) ApproveMeet(context.Context, *ApproveMeetRequest) (*ApproveMeetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ApproveMeet not implemented")
 }
-func (UnimplementedUserServiceServer) CreateMeet(context.Context, *CreateMeetRequest) (*CreateMeetResponse, error) {
+func (UnimplementedMeetServiceServer) CreateMeet(context.Context, *CreateMeetRequest) (*CreateMeetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMeet not implemented")
 }
-func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
-func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
+func (UnimplementedMeetServiceServer) mustEmbedUnimplementedMeetServiceServer() {}
+func (UnimplementedMeetServiceServer) testEmbeddedByValue()                     {}
 
-// UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserServiceServer will
+// UnsafeMeetServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MeetServiceServer will
 // result in compilation errors.
-type UnsafeUserServiceServer interface {
-	mustEmbedUnimplementedUserServiceServer()
+type UnsafeMeetServiceServer interface {
+	mustEmbedUnimplementedMeetServiceServer()
 }
 
-func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
-	// If the following call pancis, it indicates UnimplementedUserServiceServer was
+func RegisterMeetServiceServer(s grpc.ServiceRegistrar, srv MeetServiceServer) {
+	// If the following call pancis, it indicates UnimplementedMeetServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&UserService_ServiceDesc, srv)
+	s.RegisterService(&MeetService_ServiceDesc, srv)
 }
 
-func _UserService_GetHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MeetService_GetHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetHistoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetHistory(ctx, in)
+		return srv.(MeetServiceServer).GetHistory(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_GetHistory_FullMethodName,
+		FullMethod: MeetService_GetHistory_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetHistory(ctx, req.(*GetHistoryRequest))
+		return srv.(MeetServiceServer).GetHistory(ctx, req.(*GetHistoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetFuture_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MeetService_GetFuture_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetFutureRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetFuture(ctx, in)
+		return srv.(MeetServiceServer).GetFuture(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_GetFuture_FullMethodName,
+		FullMethod: MeetService_GetFuture_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetFuture(ctx, req.(*GetFutureRequest))
+		return srv.(MeetServiceServer).GetFuture(ctx, req.(*GetFutureRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_ApproveMeet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MeetService_ApproveMeet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ApproveMeetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).ApproveMeet(ctx, in)
+		return srv.(MeetServiceServer).ApproveMeet(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_ApproveMeet_FullMethodName,
+		FullMethod: MeetService_ApproveMeet_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).ApproveMeet(ctx, req.(*ApproveMeetRequest))
+		return srv.(MeetServiceServer).ApproveMeet(ctx, req.(*ApproveMeetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_CreateMeet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MeetService_CreateMeet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateMeetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).CreateMeet(ctx, in)
+		return srv.(MeetServiceServer).CreateMeet(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_CreateMeet_FullMethodName,
+		FullMethod: MeetService_CreateMeet_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).CreateMeet(ctx, req.(*CreateMeetRequest))
+		return srv.(MeetServiceServer).CreateMeet(ctx, req.(*CreateMeetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
+// MeetService_ServiceDesc is the grpc.ServiceDesc for MeetService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var UserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "meet.UserService",
-	HandlerType: (*UserServiceServer)(nil),
+var MeetService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "meet.MeetService",
+	HandlerType: (*MeetServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetHistory",
-			Handler:    _UserService_GetHistory_Handler,
+			Handler:    _MeetService_GetHistory_Handler,
 		},
 		{
 			MethodName: "GetFuture",
-			Handler:    _UserService_GetFuture_Handler,
+			Handler:    _MeetService_GetFuture_Handler,
 		},
 		{
 			MethodName: "ApproveMeet",
-			Handler:    _UserService_ApproveMeet_Handler,
+			Handler:    _MeetService_ApproveMeet_Handler,
 		},
 		{
 			MethodName: "CreateMeet",
-			Handler:    _UserService_CreateMeet_Handler,
+			Handler:    _MeetService_CreateMeet_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

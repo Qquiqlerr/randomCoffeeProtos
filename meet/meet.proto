@@ -3,7 +3,7 @@ syntax = "proto3";
 package meet;
 option go_package = "api/proto/meet";
 
-service UserService{
+service MeetService{
   rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse);
   rpc GetFuture(GetFutureRequest) returns (GetFutureResponse);
   rpc ApproveMeet(ApproveMeetRequest) returns (ApproveMeetResponse);
